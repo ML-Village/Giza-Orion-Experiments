@@ -15,15 +15,16 @@ mod OrionRunner {
 	#[storage]
 	struct Storage { 
 		id: u8,
- 	}
+	}
 
 	#[external(v0)]
 	fn main(self: @ContractState){
+	//fn main()-> Tensor<FP16x16> {
 		let _0 = input();
-	let _1: Tensor<FP16x16> = NNTrait::gemm(_0, w1(), b1(), Option::Some(1), Option::Some(1), false, true);
-	let _2: Tensor<FP16x16> = NNTrait::relu(@_1);
-	let _3: Tensor<FP16x16> = NNTrait::gemm(_2, w3(), b3(), Option::Some(1), Option::Some(1), false, true);
-	let _4: Tensor<FP16x16> = NNTrait::log_softmax(@_3, 1);
+		let _1: Tensor<FP16x16> = NNTrait::gemm(_0, w1(), b1(), Option::Some(1), Option::Some(1), false, true);
+		let _2: Tensor<FP16x16> = NNTrait::relu(@_1);
+		let _3: Tensor<FP16x16> = NNTrait::gemm(_2, w3(), b3(), Option::Some(1), Option::Some(1), false, true);
+		let _4: Tensor<FP16x16> = NNTrait::log_softmax(@_3, 1);
 		_4
 	}
 }
